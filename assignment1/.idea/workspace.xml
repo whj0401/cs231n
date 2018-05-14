@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a92ad1cc-1c66-4665-a976-0da3f24a27d5" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="two_layer_net-checkpoint.ipynb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/two_layer_net-checkpoint.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="two_layer_net.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/two_layer_net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="116" selection-start-line="116" selection-end-line="117" selection-end-column="91" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>%f</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cs231n/data_utils.py" />
+        <option value="$PROJECT_DIR$/cs231n/classifiers/k_nearest_neighbor.py" />
+        <option value="$PROJECT_DIR$/knn/knn.py" />
+        <option value="$PROJECT_DIR$/cs231n/classifiers/linear_svm.py" />
+        <option value="$PROJECT_DIR$/code/svm.py" />
+        <option value="$PROJECT_DIR$/cs231n/classifiers/linear_classifier.py" />
+        <option value="$PROJECT_DIR$/.ipynb_checkpoints/svm-checkpoint.ipynb" />
+        <option value="$PROJECT_DIR$/cs231n/classifiers/softmax.py" />
+        <option value="$PROJECT_DIR$/.ipynb_checkpoints/softmax-checkpoint.ipynb" />
+        <option value="$PROJECT_DIR$/.ipynb_checkpoints/knn-checkpoint.ipynb" />
+        <option value="$PROJECT_DIR$/cs231n/classifiers/neural_net.py" />
+        <option value="$PROJECT_DIR$/code/two_layer_net.py" />
+        <option value="$PROJECT_DIR$/.ipynb_checkpoints/two_layer_net-checkpoint.ipynb" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="25" />
+    <option name="width" value="1920" />
+    <option name="height" value="1055" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Course" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+              <item name=".ipynb_checkpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+              <item name="cs231n" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="assignment1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="assignment1" type="462c0819:PsiDirectoryNode" />
+              <item name="cs231n" type="462c0819:PsiDirectoryNode" />
+              <item name="classifiers" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.two_layer_net">
+    <configuration name="assignment1" type="JupiterNotebook" factoryName="Jupyter Notebook">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+    </configuration>
+    <configuration name="k_nearest_neighbor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cs231n/classifiers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cs231n/classifiers/k_nearest_neighbor.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="knn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/knn" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/knn/knn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="svm" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/svm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="two_layer_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/two_layer_net.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Jupyter Notebook.assignment1" />
+      <item itemvalue="Python.knn" />
+      <item itemvalue="Python.k_nearest_neighbor" />
+      <item itemvalue="Python.svm" />
+      <item itemvalue="Python.two_layer_net" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.two_layer_net" />
+        <item itemvalue="Python.svm" />
+        <item itemvalue="Python.knn" />
+        <item itemvalue="Python.k_nearest_neighbor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18124342" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32929292" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32828283" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39979014" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32828283" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/code/knn.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="20" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/two_layer_net-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/neural_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3610">
+          <caret line="194" column="60" lean-forward="true" selection-start-line="194" selection-start-column="60" selection-end-line="194" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/linear_svm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1767">
+          <caret line="94" column="28" lean-forward="true" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/linear_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="54" column="75" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/knn-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/knn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4200">
+          <caret line="207" column="39" selection-start-line="207" selection-start-column="39" selection-end-line="207" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/knn-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/knn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="211" column="35" lean-forward="true" selection-start-line="211" selection-start-column="35" selection-end-line="211" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/k_nearest_neighbor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3696">
+          <caret line="176" column="21" lean-forward="true" selection-start-line="176" selection-start-column="21" selection-end-line="176" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/lib/shape_base.py" />
+    <entry file="file://$USER_HOME$/.local/lib/python3.6/site-packages/numpy/core/_methods.py" />
+    <entry file="file://$PROJECT_DIR$/knn.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmEdu2018.1/system/python_stubs/-1247971763/numpy/random/mtrand.py" />
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/svm-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/svm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="268" selection-start-line="268" selection-end-line="268" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/knn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="228" column="72" lean-forward="true" selection-start-line="228" selection-start-column="72" selection-end-line="228" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmEdu2018.1/system/python_stubs/-1247971763/numpy/core/umath.py" />
+    <entry file="file://$USER_HOME$/.PyCharmEdu2018.1/system/python_stubs/-1247971763/numpy/core/multiarray.py" />
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/softmax-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/k_nearest_neighbor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3344">
+          <caret line="176" column="21" selection-start-line="176" selection-start-column="21" selection-end-line="176" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/data_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-940">
+          <caret line="51" column="7" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/softmax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/linear_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="54" column="75" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/knn-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/linear_svm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1767">
+          <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cs231n/classifiers/neural_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3610">
+          <caret line="194" column="60" selection-start-line="194" selection-start-column="60" selection-end-line="194" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/two_layer_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="116" selection-start-line="116" selection-end-line="117" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.ipynb_checkpoints/two_layer_net-checkpoint.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="24" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
