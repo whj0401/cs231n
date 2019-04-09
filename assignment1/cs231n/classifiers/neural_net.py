@@ -6,8 +6,7 @@ from cs231n.classifiers.softmax import *
 
 
 def sigmoid(x):
-    # return 1 / (1 + np.exp(-x))
-    return x
+    return 1 / (1 + np.exp(-x))
 
 
 class TwoLayerNet(object):
