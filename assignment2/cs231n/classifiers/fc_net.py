@@ -277,17 +277,6 @@ class FullyConnectedNet(object):
                 drop_caches.append(tmp_drop_cache)
             outs.append(tmp_out)
 
-        # if self.use_batchnorm:
-        #     for i in range(1, self.num_layers):
-        #         tmp_out, tmp_cache = affine_bn_relu_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)],
-        #                                                     self.params['gamma'+str(i)], self.params['beta'+str(i)], self.bn_params[i-1])
-        #         outs.append(tmp_out)
-        #         caches.append(tmp_cache)
-        # else:
-        #     for i in range(1, self.num_layers):
-        #         tmp_out, tmp_cache = affine_relu_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)])
-        #         outs.append(tmp_out)
-        #         caches.append(tmp_cache)
         i = self.num_layers
         scores, catche2 = affine_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)])
         ############################################################################
@@ -312,20 +301,23 @@ class FullyConnectedNet(object):
         # automated tests, make sure that your L2 regularization includes a factor #
         # of 0.5 to simplify the expression for the gradient.                      #
         ############################################################################
-        N = X.shape[0]
-        shift_scores = scores - np.max(scores, axis=1, keepdims=True)
-        softmax_output = np.exp(shift_scores) / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
-        loss = -np.sum(np.log(softmax_output[range(N), list(y)]))
-        loss /= N
+        # N = X.shape[0]
+        # shift_scores = scores - np.max(scores, axis=1, keepdims=True)
+        # softmax_output = np.exp(shift_scores) / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
+        # loss = -np.sum(np.log(softmax_output[range(N), list(y)]))
+        # loss /= N
+        loss, dscores = softmax_loss(scores, y)
+
+        # regularize
         sum_W_squares = 0
         for i in range(1, self.num_layers+1):
             sum_W_squares += np.sum(np.square(self.params['W'+str(i)]))
         loss += 0.5 * self.reg * sum_W_squares
 
         i = self.num_layers
-        dscores = softmax_output.copy()
-        dscores[range(N), list(y)] -= 1
-        dscores /= N
+        # dscores = softmax_output.copy()
+        # dscores[range(N), list(y)] -= 1
+        # dscores /= N
         dH, grads['W'+str(i)], grads['b'+str(i)] = affine_backward(dscores, catche2)
         grads['W'+str(i)] += self.reg * self.params['W'+str(i)]
         i -= 1
@@ -338,17 +330,6 @@ class FullyConnectedNet(object):
                 dH, grads['W'+str(i)], grads['b'+str(i)] = affine_relu_backward(dH, caches[i])
             grads['W'+str(i)] += self.reg * self.params['W'+str(i)]
             i -= 1
-
-        # if self.normalization == 'batchnorm':
-        #     while i > 0:
-        #         dH, grads['W'+str(i)], grads['b'+str(i)], grads['gamma'+str(i)], grads['beta'+str(i)] = affine_bn_relu_backward(dH, caches[i])
-        #         grads['W'+str(i)] += self.reg * self.params['W'+str(i)]
-        #         i -= 1
-        # else:
-        #     while i > 0:
-        #         dH, grads['W'+str(i)], grads['b'+str(i)] = affine_relu_backward(dH, caches[i])
-        #         grads['W'+str(i)] += self.reg * self.params['W'+str(i)]
-        #         i -= 1
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################

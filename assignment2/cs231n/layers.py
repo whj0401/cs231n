@@ -1,6 +1,27 @@
 from builtins import range
 import numpy as np
 
+def softmax_loss(scores, y):
+    loss = 0.0
+
+    #############################################################################
+    # TODO: Compute the softmax loss and its gradient using no explicit loops.  #
+    # Store the loss in loss and the gradient in dW. If you are not careful     #
+    # here, it is easy to run into numeric instability. Don't forget the        #
+    # regularization!                                                           #
+    #############################################################################
+    shift_scores = scores - np.max(scores, axis=1, keepdims=True)
+
+    num_train, num_classes = shift_scores.shape
+    loss_i = np.log(np.sum(np.exp(shift_scores), axis=1)) - shift_scores[range(num_train), list(y)]
+    loss += np.sum(loss_i) / num_train
+    derivatives = 1 / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
+    dscores = np.exp(shift_scores) / derivatives
+    dscores[range(num_train), list(y)] -= 1
+    #############################################################################
+    #                          END OF YOUR CODE                                 #
+    #############################################################################
+    return loss, dscores
 
 def affine_forward(x, w, b):
     """
