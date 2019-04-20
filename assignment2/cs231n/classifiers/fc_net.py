@@ -301,11 +301,7 @@ class FullyConnectedNet(object):
         # automated tests, make sure that your L2 regularization includes a factor #
         # of 0.5 to simplify the expression for the gradient.                      #
         ############################################################################
-        # N = X.shape[0]
-        # shift_scores = scores - np.max(scores, axis=1, keepdims=True)
-        # softmax_output = np.exp(shift_scores) / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
-        # loss = -np.sum(np.log(softmax_output[range(N), list(y)]))
-        # loss /= N
+
         loss, dscores = softmax_loss(scores, y)
 
         # regularize

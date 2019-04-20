@@ -1,27 +1,27 @@
 from builtins import range
 import numpy as np
 
-def softmax_loss(scores, y):
-    loss = 0.0
-
-    #############################################################################
-    # TODO: Compute the softmax loss and its gradient using no explicit loops.  #
-    # Store the loss in loss and the gradient in dW. If you are not careful     #
-    # here, it is easy to run into numeric instability. Don't forget the        #
-    # regularization!                                                           #
-    #############################################################################
-    shift_scores = scores - np.max(scores, axis=1, keepdims=True)
-
-    num_train, num_classes = shift_scores.shape
-    loss_i = np.log(np.sum(np.exp(shift_scores), axis=1)) - shift_scores[range(num_train), list(y)]
-    loss += np.sum(loss_i) / num_train
-    derivatives = 1 / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
-    dscores = np.exp(shift_scores) / derivatives
-    dscores[range(num_train), list(y)] -= 1
-    #############################################################################
-    #                          END OF YOUR CODE                                 #
-    #############################################################################
-    return loss, dscores
+# def softmax_loss(scores, y):
+#     loss = 0.0
+#
+#     #############################################################################
+#     # TODO: Compute the softmax loss and its gradient using no explicit loops.  #
+#     # Store the loss in loss and the gradient in dW. If you are not careful     #
+#     # here, it is easy to run into numeric instability. Don't forget the        #
+#     # regularization!                                                           #
+#     #############################################################################
+#     shift_scores = scores - np.max(scores, axis=1, keepdims=True)
+#
+#     num_train, num_classes = shift_scores.shape
+#     loss_i = np.log(np.sum(np.exp(shift_scores), axis=1)) - shift_scores[range(num_train), list(y)]
+#     loss += np.sum(loss_i) / num_train
+#     derivatives = 1 / np.sum(np.exp(shift_scores), axis=1, keepdims=True)
+#     dscores = np.exp(shift_scores) / derivatives
+#     dscores[range(num_train), list(y)] -= 1
+#     #############################################################################
+#     #                          END OF YOUR CODE                                 #
+#     #############################################################################
+#     return loss, dscores
 
 def affine_forward(x, w, b):
     """
@@ -510,12 +510,49 @@ def conv_forward_naive(x, w, b, conv_param):
     # TODO: Implement the convolutional forward pass.                         #
     # Hint: you can use the function np.pad for padding.                      #
     ###########################################################################
-    pass
+    N, C, H, W = x.shape
+    F, C_, HH, WW = w.shape
+    # refer to the annotation
+    if C != C:
+        return None, None
+
+    stride = conv_param['stride']
+    pad = conv_param['pad']
+
+    x_with_pad = np.pad(x, ((0, 0), (0, 0), (pad, pad), (pad, pad)), 'constant', constant_values=(0.0, 0.0))
+    H_ = int(1 + (H + 2 * pad - HH) / stride)
+    W_ = int(1 + (W + 2 * pad - WW) / stride)
+    out = np.zeros((N, F, H_, W_))
+    for row in range(H_):
+        for col in range(W_):
+            H_begin = row * stride
+            W_begin = col * stride
+            H_end = H_begin + HH
+            W_end = W_begin + WW
+            # for case_idx in range(N):
+                # active_grids = np.tile(x_with_pad[case_idx, :, H_begin:H_end, W_begin:W_end].reshape(C, HH, WW), (F, 1, 1, 1))
+                # out[case_idx, :, row, col] = np.sum(active_grids * w, axis=(1, 2, 3)) + b.reshape(1, F)
+            active_pixels = np.tile(x_with_pad[:, :, H_begin:H_end, W_begin:W_end].reshape(N, 1, C, HH, WW), (1, F, 1, 1, 1))
+            out[:, :, row, col] = np.tile(b, (N, 1)) + np.sum(active_pixels * np.tile(w.reshape(1, F, C, HH, WW), (N, 1, 1, 1, 1)), axis=(2, 3, 4))
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
     cache = (x, w, b, conv_param)
     return out, cache
+
+def get_Xij_is_active_to_filter(i, j, H, W, HH, WW, pad, stride, H_, W_):
+    """
+    return the active indexes in filter
+    """
+    _i, _j = i + pad, j + pad
+    # _i-HH <= n*stride <= _i
+    H_ns = range(max(int((_i-HH+stride)/stride), 0), min(int(_i/stride)+1, H_))
+    W_ns = range(max(int((_j-WW+stride)/stride), 0), min(int(_j/stride)+1, W_))
+    indexes = []
+    for k in H_ns:
+        for t in W_ns:
+            indexes.append(((k, t), (_i-k*stride, _j-t*stride)))
+    return indexes
 
 
 def conv_backward_naive(dout, cache):
@@ -535,7 +572,26 @@ def conv_backward_naive(dout, cache):
     ###########################################################################
     # TODO: Implement the convolutional backward pass.                        #
     ###########################################################################
-    pass
+    x, w, b, conv_param = cache
+    N, C, H, W = x.shape
+    F, _, HH, WW = w.shape # FxCxHHxWW
+    _, _, H_, W_ = dout.shape # NxFxH'xW'
+
+    stride = conv_param['stride']
+    pad = conv_param['pad']
+
+    db = np.sum(dout, axis=(0, 2, 3))
+    # dw[f,c,hh,ww] is the sum of elements of x which is active for w[f,c,hh,ww]
+    # dx[n,c,h,w] is the sum of elements of w which counted with dx[n,c,h,w]
+    # note, the numbers of counts for every element may be different, because of the stride
+    dw = np.zeros(w.shape)
+    dx = np.zeros(x.shape)
+    for i in range(H):
+        for j in range(W):
+            indexes_in_filter = get_Xij_is_active_to_filter(i, j, H, W, HH, WW, pad, stride, H_, W_)
+            for idx in indexes_in_filter:
+                dx[:, :, i, j] += dout[:, :, idx[0][0], idx[0][1]].dot(w[:, :, idx[1][0], idx[1][1]])
+                dw[:, :, idx[1][0], idx[1][1]] += dout[:, :, idx[0][0], idx[0][1]].T.dot(x[:, :, i, j])
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
@@ -565,7 +621,21 @@ def max_pool_forward_naive(x, pool_param):
     ###########################################################################
     # TODO: Implement the max-pooling forward pass                            #
     ###########################################################################
-    pass
+    N, C, H, W = x.shape
+    ph = pool_param['pool_height']
+    pw = pool_param['pool_width']
+    stride = pool_param['stride']
+
+    H_ = 1 + int((H - ph) / stride)
+    W_ = 1 + int((W - pw) / stride)
+    out = np.zeros((N, C, H_, W_))
+    for row in range(H_):
+        for col in range(W_):
+            H_begin = row * stride
+            W_begin = col * stride
+            H_end = H_begin + ph
+            W_end = W_begin + pw
+            out[:, :, row, col] = np.max(x[:, :, H_begin:H_end, W_begin:W_end], axis=(2, 3))
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
@@ -588,7 +658,40 @@ def max_pool_backward_naive(dout, cache):
     ###########################################################################
     # TODO: Implement the max-pooling backward pass                           #
     ###########################################################################
-    pass
+    x, pool_param = cache
+    N, C, H, W = x.shape
+    ph = pool_param['pool_height']
+    pw = pool_param['pool_width']
+    stride = pool_param['stride']
+    _, _, H_, W_ = dout.shape
+
+    dx = np.zeros(x.shape)
+    for row in range(H_):
+        for col in range(W_):
+            H_begin = row * stride
+            W_begin = col * stride
+            H_end = H_begin + ph
+            W_end = W_begin + pw
+
+            # max_indexes = [[(0, 0) for k in range(C)] for t in range(N)]
+            # # find the max idx for every NxC data
+            # for n in range(N):
+            #     for c in range(C):
+            #         max_indexes[n][c] = (H_begin, W_begin)
+            #         for h_idx in range(H_begin, H_end):
+            #             for w_idx in range(W_begin, W_end):
+            #                 if x[n, c, h_idx, w_idx] > x[n, c, max_indexes[n][c][0], max_indexes[n][c][1]]:
+            #                     max_indexes[n][c] = (h_idx, w_idx)
+            # for n in range(N):
+            #     for c in range(C):
+            #         dx[n, c, max_indexes[n][c][0], max_indexes[n][c][1]] += dout[n, c, row, col]
+
+            active_x = x[:, :, H_begin:H_end, W_begin:W_end]
+            max_map = (active_x == np.max(active_x, axis=(2, 3), keepdims=True))
+
+            for n in range(N):
+                for c in range(C):
+                    dx[n, c, H_begin:H_end, W_begin:W_end] += dout[n, c, row, col] * max_map[n, c, :, :]
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
