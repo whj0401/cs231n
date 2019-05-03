@@ -176,6 +176,7 @@ class FullyConnectedNet(object):
         self.normalization = normalization
         self.use_dropout = dropout != 1
         self.use_batchnorm = (normalization == 'batchnorm')
+        self.use_layernorm = (normalization == 'layernorm')
         self.reg = reg
         self.num_layers = 1 + len(hidden_dims)
         self.dtype = dtype
@@ -224,8 +225,11 @@ class FullyConnectedNet(object):
             for i in range(1, self.num_layers):
                 self.params['gamma'+str(i)] = np.ones(hidden_dims[i-1])
                 self.params['beta'+str(i)] = np.zeros(hidden_dims[i-1])
-        if self.normalization=='layernorm':
-            self.bn_params = [{} for i in range(self.num_layers - 1)]
+        elif self.use_layernorm:
+            self.ln_params = [{'eps': 1e-5} for i in range(self.num_layers - 1)]
+            for i in range(1, self.num_layers):
+                self.params['gamma'+str(i)] = np.ones(hidden_dims[i-1])
+                self.params['beta'+str(i)] = np.zeros(hidden_dims[i-1])
 
         # Cast all parameters to the correct datatype
         for k, v in self.params.items():
@@ -269,6 +273,9 @@ class FullyConnectedNet(object):
             if self.use_batchnorm:
                 tmp_out, tmp_cache = affine_bn_relu_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)],
                                                             self.params['gamma'+str(i)], self.params['beta'+str(i)], self.bn_params[i-1])
+            elif self.use_layernorm:
+                tmp_out, tmp_cache = affine_ln_relu_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)],
+                                                            self.params['gamma'+str(i)], self.params['beta'+str(i)], self.ln_params[i-1])
             else:
                 tmp_out, tmp_cache = affine_relu_forward(outs[i-1], self.params['W'+str(i)], self.params['b'+str(i)])
             caches.append(tmp_cache)
@@ -322,6 +329,8 @@ class FullyConnectedNet(object):
                 dH = dropout_backward(dH, drop_caches[i])
             if self.use_batchnorm:
                 dH, grads['W'+str(i)], grads['b'+str(i)], grads['gamma'+str(i)], grads['beta'+str(i)] = affine_bn_relu_backward(dH, caches[i])
+            elif self.use_layernorm:
+                dH, grads['W'+str(i)], grads['b'+str(i)], grads['gamma'+str(i)], grads['beta'+str(i)] = affine_ln_relu_backward(dH, caches[i])
             else:
                 dH, grads['W'+str(i)], grads['b'+str(i)] = affine_relu_backward(dH, caches[i])
             grads['W'+str(i)] += self.reg * self.params['W'+str(i)]

@@ -344,7 +344,7 @@ def layernorm_forward(x, gamma, beta, ln_param):
     - out: of shape (N, D)
     - cache: A tuple of values needed in the backward pass
     """
-    out, cache = None, None
+    out, cache = None, {}
     eps = ln_param.get('eps', 1e-5)
     ###########################################################################
     # TODO: Implement the training-time forward pass for layer norm.          #
@@ -356,7 +356,17 @@ def layernorm_forward(x, gamma, beta, ln_param):
     # transformations you could perform, that would enable you to copy over   #
     # the batch norm code and leave it almost unchanged?                      #
     ###########################################################################
-    pass
+    N, D = x.shape
+    Ex = (np.mean(x, axis=1)).reshape(N, 1).dot(np.ones((1, D)))
+    root_Varx = (np.sqrt(np.var(x, axis=1) + eps)).reshape(N, 1).dot(np.ones((1, D)))
+    x_ = (x - Ex) / root_Varx
+    out = x_ * (np.ones((N, 1)).dot(gamma.reshape(1, D))) + (np.ones((N, 1)).dot(beta.reshape(1, D)))
+    cache['eps'] = eps
+    cache['x'] = x
+    cache['x_'] = x_
+    cache['gamma'] = gamma
+    cache['var'] = np.var(x, axis=1)
+    cache['mean'] = np.mean(x, axis=1)
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
@@ -387,7 +397,22 @@ def layernorm_backward(dout, cache):
     # implementation of batch normalization. The hints to the forward pass    #
     # still apply!                                                            #
     ###########################################################################
-    pass
+    N, D = dout.shape
+    gamma = cache['gamma']
+    x = cache['x']
+    x_ = cache['x_']
+    eps = cache['eps']
+    var = cache['var'].reshape(N, 1)
+    Ex = (cache['mean'].reshape(N, 1)).dot(np.ones((1, D))) # NxD
+    sigma_square = var.dot(np.ones((1, D))) # NxD
+
+    dgamma = np.sum(x_ * dout, axis=0)
+    dbeta = np.sum(dout, axis=0)
+
+    dx_ = np.ones((N, 1)).dot(gamma.reshape(1, D)) * dout # NxD
+    dvar = np.sum(dx_*(x-Ex)*(-0.5)*((sigma_square + eps)**(-1.5)), axis=1).reshape(N, 1) # Nx1
+    dmean = (np.sum(dx_*(-1)/np.sqrt(sigma_square + eps), axis=1)).reshape(N, 1) - 2 * dvar * np.sum(x-Ex, axis=1).reshape(N, 1) / N # Nx1
+    dx = dx_ / np.sqrt(sigma_square + eps) + (dvar.dot(np.ones((1, D))) * 2 * (x-Ex) + (dmean.dot(np.ones((1, D))))) / D
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
