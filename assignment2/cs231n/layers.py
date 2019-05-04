@@ -538,7 +538,7 @@ def conv_forward_naive(x, w, b, conv_param):
     N, C, H, W = x.shape
     F, C_, HH, WW = w.shape
     # refer to the annotation
-    if C != C:
+    if C_ != C:
         return None, None
 
     stride = conv_param['stride']
@@ -754,7 +754,12 @@ def spatial_batchnorm_forward(x, gamma, beta, bn_param):
     # vanilla version of batch normalization you implemented above.           #
     # Your implementation should be very short; ours is less than five lines. #
     ###########################################################################
-    pass
+    N, C, H, W = x.shape
+    tmp_x = x.reshape(N, C*H*W)
+    tmp_gamma = (np.tile(gamma.reshape(C, 1), (1, H*W))).reshape(C*H*W)
+    tmp_beta = (np.tile(beta.reshape(C, 1), (1, H*W))).reshape(C*H*W)
+    tmp_out, cache = batchnorm_forward(tmp_x, tmp_gamma, tmp_beta, bn_param)
+    out = tmp_out.reshape(N, C, H, W)
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
@@ -784,7 +789,12 @@ def spatial_batchnorm_backward(dout, cache):
     # vanilla version of batch normalization you implemented above.           #
     # Your implementation should be very short; ours is less than five lines. #
     ###########################################################################
-    pass
+    N, C, H, W = dout.shape
+    tmp_dout = dout.reshape(N, C*H*W)
+    tmp_dx, tmp_dgamma, tmp_dbeta = batchnorm_backward(tmp_dout, cache)
+    dx = tmp_dx.reshape(N, C, H, W)
+    dgamma = (tmp_dgamma.reshape(C, H*W).T)[0]
+    dbeta = (tmp_dbeta.reshape(C, H*W).T)[0]
     ###########################################################################
     #                             END OF YOUR CODE                            #
     ###########################################################################
